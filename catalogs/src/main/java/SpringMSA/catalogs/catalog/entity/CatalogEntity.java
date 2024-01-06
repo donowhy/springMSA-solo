@@ -33,8 +33,7 @@ public class CatalogEntity implements Serializable {
     private Integer unitPrice;
 
     @Column(nullable = false, updatable = false, insertable = false)
-    @ColumnDefault(value = "CURRENT_TIMESTAMP")
-    private LocalDateTime createdAt;
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Builder
     public CatalogEntity(long id, String productId, String productName, Integer stock, Integer unitPrice, LocalDateTime createdAt) {
