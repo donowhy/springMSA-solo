@@ -1,0 +1,35 @@
+server:
+  port: 8083
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+
+
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.hostname}:${spring.application.instance_id:${random.value}}
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://127.0.0.1:8761/eureka
+
+spring:
+  datasource:
+    # datasource ??? ??? ??? ?? ??
+    url: jdbc:mysql://localhost:3307/msa
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  application:
+    name: user-service
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQLDialect
+    open-in-view: false
+    show-sql: true
+    hibernate:
+      ddl-auto: create
